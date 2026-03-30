@@ -7,14 +7,22 @@ TEMPLATE_MAP = {
     "hr": "templates/hr.docx"
 }
 
+OUTPUT_DIR = "outputs"
+
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+
 def generate_offer(data):
-    template_path = TEMPLATE_MAP[data["template_key"]]
-    
+    template_path = TEMPLATE_MAP.get(data["template_key"])
+
+    if not template_path:
+        raise ValueError("Invalid template_key")
+
     doc = DocxTemplate(template_path)
-    
-    output_path = f"outputs/{data['name'].replace(' ', '_')}.docx"
-    
+
+    filename = f"{data['name'].replace(' ', '_')}_{data['template_key']}.docx"
+    output_path = os.path.join(OUTPUT_DIR, filename)
+
     doc.render(data)
     doc.save(output_path)
-    
+
     return output_path
