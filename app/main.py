@@ -8,6 +8,7 @@ from app.logger import log
 app = FastAPI()
 
 class Employee(BaseModel):
+    id: str
     template_key: str
     name: str
     position: str
