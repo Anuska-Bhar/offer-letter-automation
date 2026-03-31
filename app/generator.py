@@ -19,7 +19,7 @@ def generate_offer(data):
 
     doc = DocxTemplate(template_path)
 
-    filename = f"{data['name'].replace(' ', '_')}_{data['template_key']}.docx"
+    filename = f"{data['name'].replace(' ', '_')}_{data['id']}_{data['template_key']}.docx"
     output_path = os.path.join(OUTPUT_DIR, filename)
 
     doc.render(data)
