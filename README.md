@@ -1,6 +1,6 @@
 # offer-letter-automation
 
-## 🚀 Quick Start (1 Click Setup)
+## 🚀 Quick Start (Setup)
 
 ### Step 1: Install Docker
 https://www.docker.com/products/docker-desktop/
@@ -115,3 +115,23 @@ Click:
 
 ## Flow
 Sheets → n8n → FastAPI → DOCX → Drive → Update Sheet
+
+---
+
+## 🔁 Running the System (After Initial Setup)
+
+Once setup is completed, follow these steps each time:
+
+1. Start the system:
+```bash
+docker-compose up
+
+2. Open n8n:
+http://localhost:5678
+
+3. Open your Employee Details sheet and add/update employee data.
+
+4. In n8n, click:
+▶ Execute Workflow
+
+---
