@@ -2,31 +2,20 @@
   "name": "My workflow 2",
   "nodes": [
     {
-      "parameters": {},
-      "type": "n8n-nodes-base.manualTrigger",
-      "typeVersion": 1,
-      "position": [
-        -1104,
-        144
-      ],
-      "id": "b38b6d1d-4983-4ef8-8db8-2772bbdc2d85",
-      "name": "When clicking ‘Execute workflow’"
-    },
-    {
       "parameters": {
         "documentId": {
           "__rl": true,
-          "value": "1ASdmIAdQzlpYPts_0wBHE33wK9a8KjYdJi6RGhMLQFY",
+          "value": "1JAiROtn065MA60RHKF1z125xY_gcCe34aRCllS5QtxQ",
           "mode": "list",
-          "cachedResultName": "Employee Details",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ASdmIAdQzlpYPts_0wBHE33wK9a8KjYdJi6RGhMLQFY/edit?usp=drivesdk"
+          "cachedResultName": "Employee Sheet",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1JAiROtn065MA60RHKF1z125xY_gcCe34aRCllS5QtxQ/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
           "value": "gid=0",
           "mode": "list",
           "cachedResultName": "Sheet1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ASdmIAdQzlpYPts_0wBHE33wK9a8KjYdJi6RGhMLQFY/edit#gid=0"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1JAiROtn065MA60RHKF1z125xY_gcCe34aRCllS5QtxQ/edit#gid=0"
         },
         "options": {}
       },
@@ -48,13 +37,13 @@
     {
       "parameters": {
         "mode": "raw",
-        "jsonOutput": "={\n  \"template_key\": \"{{ \n  $json[\"position\"].toLowerCase().includes(\"business\") ? \"bda\" :\n  $json[\"position\"].toLowerCase().includes(\"marketing\") ? \"marketing\" :\n  \"hr\"\n}}\",\n  \"name\": \"{{$json[\"name\"]}}\",\n  \"position\": \"{{$json[\"position\"]}}\",\n  \"annual_salary_pa\": \"{{$json[\"annual_salary_pa\"]}}\",\n  \"variable_pay_pa\": \"{{$json[\"variable_pay_pa\"]}}\",\n  \"joining_date\": \"{{$json[\"joining_date\"]}}\",\n  \"renumeration_sal\": \"{{$json[\"renumeration_sal\"]}}\",\n  \"renumeration_vp\": \"{{$json[\"renumeration_vp\"]}}\",\n  \"responsibilities\": \"{{$json[\"responsibilities\"]}}\"\n}",
+        "jsonOutput": "={\n  \"id\": \"{{$json[\"id\"]}}\"\n  \"template_key\": \"{{$json[\"template_key\"]}}\",\n  \"name\": \"{{$json[\"name\"]}}\",\n  \"position\": \"{{$json[\"position\"]}}\",\n  \"annual_salary_pa\": \"{{$json[\"annual_salary_pa\"]}}\",\n  \"variable_pay_pa\": \"{{$json[\"variable_pay_pa\"]}}\",\n  \"joining_date\": \"{{$json[\"joining_date\"]}}\",\n  \"renumeration_sal\": \"{{$json[\"renumeration_sal\"]}}\",\n  \"renumeration_vp\": \"{{$json[\"renumeration_vp\"]}}\",\n  \"responsibilities\": \"{{$json[\"responsibilities\"]}}\"\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -656,
+        -448,
         144
       ],
       "id": "584c6734-fb9b-4e2d-9a44-527df5a1e0b7",
@@ -79,7 +68,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        -272,
+        -64,
         144
       ],
       "id": "53ca20ff-7792-4a58-8636-b22355e258f6",
@@ -92,7 +81,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -800,
+        -592,
         160
       ],
       "id": "e7b32db8-1607-46cb-8299-8463e784ae3c",
@@ -104,7 +93,7 @@
       "name": "Replace Me",
       "typeVersion": 1,
       "position": [
-        -784,
+        -576,
         320
       ],
       "id": "bdbe242f-7226-4af1-a15c-ad0560ebeefd"
@@ -114,21 +103,24 @@
         "name": "={{ $json[\"headers\"][\"content-disposition\"].match(/filename=\"(.+)\"/)[1] }}\n",
         "driveId": {
           "__rl": true,
+          "value": "My Drive",
           "mode": "list",
-          "value": "My Drive"
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
         },
         "folderId": {
           "__rl": true,
+          "value": "1NQ_Cp4oaUnIpFisEQTVe3W-_qYDt37D1",
           "mode": "list",
-          "value": "root",
-          "cachedResultName": "/ (Root folder)"
+          "cachedResultName": "Employee Offer Letters",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1NQ_Cp4oaUnIpFisEQTVe3W-_qYDt37D1"
         },
         "options": {}
       },
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        0,
+        208,
         0
       ],
       "id": "51553009-e20f-4e61-93ba-010e1791f99c",
@@ -167,7 +159,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -112,
+        96,
         160
       ],
       "id": "5e9ec367-53e2-430d-acd8-6c1afc896fce",
@@ -194,9 +186,12 @@
           "mappingMode": "defineBelow",
           "value": {
             "status": "failed",
-            "error": "ERROR"
+            "error": "ERROR",
+            "name": "={{ $json[\"name\"].trim().split(\"_\")[0] }}"
           },
-          "matchingColumns": [],
+          "matchingColumns": [
+            "name"
+          ],
           "schema": [
             {
               "id": "template_key",
@@ -214,7 +209,8 @@
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "position",
@@ -326,8 +322,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        80,
-        256
+        336,
+        224
       ],
       "id": "750c21ac-4a92-45d5-ad8f-44fee8585276",
       "name": "Update row in sheet1",
@@ -359,9 +355,19 @@
           "mappingMode": "autoMapInputData",
           "value": {},
           "matchingColumns": [
-            "name"
+            "id"
           ],
           "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
             {
               "id": "template_key",
               "displayName": "template_key",
@@ -480,7 +486,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -448,
+        -240,
         144
       ],
       "id": "4fea5043-e33f-41bc-be8a-336fde83e73c",
@@ -512,15 +518,27 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "name": "={{ $json[\"name\"].trim().split(\"_\")[0] }}",
+            "name": "",
             "status": "Generated",
             "file_url": "={{ $json.webViewLink }}",
-            "error": "None"
+            "error": "None",
+            "row_number": 0,
+            "id": "={{ $json.name.split(\"_\")[1] }}"
           },
           "matchingColumns": [
-            "name"
+            "id"
           ],
           "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
             {
               "id": "template_key",
               "displayName": "template_key",
@@ -629,6 +647,17 @@
               "display": true,
               "type": "string",
               "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -639,7 +668,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        160,
+        384,
         0
       ],
       "id": "af5f0a29-3fff-41fc-8eda-ea52bb4ed69c",
@@ -650,26 +679,111 @@
           "name": "Google Sheets account"
         }
       }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 2
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -1152,
+        144
+      ],
+      "id": "174d6030-6055-44aa-9bec-5997889c7f0f",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "aa56a067-f1c9-4d4a-81ea-99a03a10a662",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "Generated",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            },
+            {
+              "id": "0875defb-4e36-4870-80da-22ceeabf171f",
+              "leftValue": "={{$json[\"joining_date\"] && $json[\"name\"]}}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -784,
+        64
+      ],
+      "id": "70ad158d-5ceb-4563-9c84-26b63312c4cb",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "8485bfcb-bdd6-4263-abe3-7583bca5f316",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "Generated",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        592,
+        0
+      ],
+      "id": "163623bc-49c5-4513-bf91-4ee9031eb9f1",
+      "name": "If2"
     }
   ],
   "pinData": {},
   "connections": {
-    "When clicking ‘Execute workflow’": {
-      "main": [
-        [
-          {
-            "node": "Get row(s) in sheet",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Get row(s) in sheet": {
       "main": [
         [
           {
-            "node": "Loop Over Items",
+            "node": "If1",
             "type": "main",
             "index": 0
           }
@@ -766,6 +880,50 @@
           }
         ]
       ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row in sheet": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Update row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
@@ -773,7 +931,7 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "766a7b66-4f5a-4a34-b135-87fefe6770d3",
+  "versionId": "2a23c0a8-4046-4ba7-8011-8ee0a4a1f8ac",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "13f85275d344e8d9c498d59fc192bed7ec4284f468fbcfd1ef73c26bb1b119ae"
