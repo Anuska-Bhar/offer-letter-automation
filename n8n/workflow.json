@@ -1,5 +1,5 @@
 {
-  "name": "My workflow 2",
+  "name": "My_workflow",
   "nodes": [
     {
       "parameters": {
@@ -43,7 +43,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -448,
+        -416,
         144
       ],
       "id": "584c6734-fb9b-4e2d-9a44-527df5a1e0b7",
@@ -68,7 +68,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        -64,
+        -160,
         144
       ],
       "id": "53ca20ff-7792-4a58-8636-b22355e258f6",
@@ -486,8 +486,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -240,
-        144
+        -256,
+        336
       ],
       "id": "4fea5043-e33f-41bc-be8a-336fde83e73c",
       "name": "Append or update row in sheet1",
@@ -518,7 +518,6 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "name": "",
             "status": "Generated",
             "file_url": "={{ $json.webViewLink }}",
             "error": "None",
@@ -738,7 +737,7 @@
       "typeVersion": 2.3,
       "position": [
         -784,
-        64
+        48
       ],
       "id": "70ad158d-5ceb-4563-9c84-26b63312c4cb",
       "name": "If1"
@@ -794,7 +793,7 @@
       "main": [
         [
           {
-            "node": "Append or update row in sheet1",
+            "node": "HTTP Request",
             "type": "main",
             "index": 0
           }
@@ -872,13 +871,7 @@
     },
     "Append or update row in sheet1": {
       "main": [
-        [
-          {
-            "node": "HTTP Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Schedule Trigger": {
@@ -926,12 +919,12 @@
       ]
     }
   },
-  "active": false,
+  "active": true,
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "2a23c0a8-4046-4ba7-8011-8ee0a4a1f8ac",
+  "versionId": "d352fbc9-53db-473a-bf9d-7d70e231cc36",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "13f85275d344e8d9c498d59fc192bed7ec4284f468fbcfd1ef73c26bb1b119ae"
