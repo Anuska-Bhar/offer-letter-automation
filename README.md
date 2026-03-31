@@ -1,5 +1,17 @@
 # offer-letter-automation
 
+## 🚀 Quick Start (1 Click Setup)
+
+### Step 1: Install Docker
+https://www.docker.com/products/docker-desktop/
+
+---
+
+### Step 2: Run System
+
+```bash
+docker-compose up
+
 ## Features
 - Google Sheets input
 - Automated document generation
