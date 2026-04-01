@@ -526,7 +526,7 @@
           "conditions": [
             {
               "id": "0875defb-4e36-4870-80da-22ceeabf171f",
-              "leftValue": "={{$json[\"joining_date\"] && $json[\"name\"]}}",
+              "leftValue": "={{ $json.name }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -537,10 +537,29 @@
             {
               "id": "d5f02e90-f027-4aba-878c-1861c8e4cd9c",
               "leftValue": "={{ $json.status }}",
+              "rightValue": "Generated",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            },
+            {
+              "id": "04a990a5-c227-48d7-84b2-28422c41979f",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "b3e9b518-035b-4a44-aab9-fa2d990e6bfc",
+              "leftValue": "={{ $json.joining_date }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
-                "operation": "empty",
+                "operation": "notEmpty",
                 "singleValue": true
               }
             }
@@ -722,7 +741,7 @@
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false
   },
-  "versionId": "ca699700-ce9d-413c-8767-a401a652126e",
+  "versionId": "300daa0e-bfab-48f0-8558-333f019f0c9a",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "13f85275d344e8d9c498d59fc192bed7ec4284f468fbcfd1ef73c26bb1b119ae"
