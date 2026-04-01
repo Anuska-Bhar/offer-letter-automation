@@ -37,7 +37,7 @@
     {
       "parameters": {
         "mode": "raw",
-        "jsonOutput": "={\n  \"id\": \"{{$json[\"id\"]}}\"\n  \"template_key\": \"{{$json[\"template_key\"]}}\",\n  \"name\": \"{{$json[\"name\"]}}\",\n  \"position\": \"{{$json[\"position\"]}}\",\n  \"annual_salary_pa\": \"{{$json[\"annual_salary_pa\"]}}\",\n  \"variable_pay_pa\": \"{{$json[\"variable_pay_pa\"]}}\",\n  \"joining_date\": \"{{$json[\"joining_date\"]}}\",\n  \"renumeration_sal\": \"{{$json[\"renumeration_sal\"]}}\",\n  \"renumeration_vp\": \"{{$json[\"renumeration_vp\"]}}\",\n  \"responsibilities\": \"{{$json[\"responsibilities\"]}}\"\n}",
+        "jsonOutput": "={\n  \"id\": \"{{$json[\"id\"]}}\"\n  \"template_key\": \"{{$json[\"template_key\"]}}\",\n  \"name\": \"{{$json[\"name\"]}}\",\n  \"position\": \"{{$json[\"position\"]}}\",\n  \"annual_salary_pa\": \"{{$json[\"annual_salary_pa\"]}}\",\n  \"variable_pay_pa\": \"{{$json[\"variable_pay_pa\"]}}\",\n  \"joining_date\": \"{{$json[\"joining_date\"]}}\",\n  \"renumeration_sal\": \"{{$json[\"renumeration_sal\"]}}\",\n  \"renumeration_vp\": \"{{$json[\"renumeration_vp\"]}}\",\n  \"responsibilities\": \"{{$json[\"responsibilities\"]}}\",\n    \"status\": \"{{ $json.status }}\"\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.set",
@@ -68,8 +68,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        -160,
-        144
+        0,
+        64
       ],
       "id": "53ca20ff-7792-4a58-8636-b22355e258f6",
       "name": "HTTP Request"
@@ -143,12 +143,13 @@
           },
           "conditions": [
             {
-              "id": "24b2528f-de52-4226-855b-b847e44578e0",
-              "leftValue": "={{ $json.statusCode }}",
-              "rightValue": 200,
+              "id": "f521450b-f5ad-4d56-97df-118e2fadac70",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": 0,
               "operator": {
-                "type": "number",
-                "operation": "equals"
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
               }
             }
           ],
@@ -159,7 +160,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        96,
+        -256,
         160
       ],
       "id": "5e9ec367-53e2-430d-acd8-6c1afc896fce",
@@ -333,175 +334,11 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        336,
-        224
+        208,
+        256
       ],
       "id": "750c21ac-4a92-45d5-ad8f-44fee8585276",
       "name": "Update row in sheet1",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "5U7HohV2qcpiGhkA",
-          "name": "Google Sheets account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "appendOrUpdate",
-        "documentId": {
-          "__rl": true,
-          "value": "1JAiROtn065MA60RHKF1z125xY_gcCe34aRCllS5QtxQ",
-          "mode": "list",
-          "cachedResultName": "Employee Sheet",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1JAiROtn065MA60RHKF1z125xY_gcCe34aRCllS5QtxQ/edit?usp=drivesdk"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": "gid=0",
-          "mode": "list",
-          "cachedResultName": "Sheet1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1JAiROtn065MA60RHKF1z125xY_gcCe34aRCllS5QtxQ/edit#gid=0"
-        },
-        "columns": {
-          "mappingMode": "autoMapInputData",
-          "value": {},
-          "matchingColumns": [
-            "id"
-          ],
-          "schema": [
-            {
-              "id": "id",
-              "displayName": "id",
-              "required": false,
-              "defaultMatch": true,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
-              "id": "template_key",
-              "displayName": "template_key",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "name",
-              "displayName": "name",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
-              "id": "position",
-              "displayName": "position",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "annual_salary_pa",
-              "displayName": "annual_salary_pa",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "variable_pay_pa",
-              "displayName": "variable_pay_pa",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "joining_date",
-              "displayName": "joining_date",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "renumeration_sal",
-              "displayName": "renumeration_sal",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "renumeration_vp",
-              "displayName": "renumeration_vp",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "responsibilities",
-              "displayName": "responsibilities",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "status",
-              "displayName": "status",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "file_url",
-              "displayName": "file_url",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "error",
-              "displayName": "error",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.7,
-      "position": [
-        -256,
-        336
-      ],
-      "id": "4fea5043-e33f-41bc-be8a-336fde83e73c",
-      "name": "Append or update row in sheet1",
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "5U7HohV2qcpiGhkA",
@@ -721,15 +558,6 @@
           },
           "conditions": [
             {
-              "id": "aa56a067-f1c9-4d4a-81ea-99a03a10a662",
-              "leftValue": "={{ $json.status }}",
-              "rightValue": "Generated",
-              "operator": {
-                "type": "string",
-                "operation": "notEquals"
-              }
-            },
-            {
               "id": "0875defb-4e36-4870-80da-22ceeabf171f",
               "leftValue": "={{$json[\"joining_date\"] && $json[\"name\"]}}",
               "rightValue": "",
@@ -769,7 +597,8 @@
               "rightValue": "Generated",
               "operator": {
                 "type": "string",
-                "operation": "notEquals"
+                "operation": "empty",
+                "singleValue": true
               }
             }
           ],
@@ -804,7 +633,7 @@
       "main": [
         [
           {
-            "node": "HTTP Request",
+            "node": "If",
             "type": "main",
             "index": 0
           }
@@ -815,7 +644,7 @@
       "main": [
         [
           {
-            "node": "If",
+            "node": "Upload file",
             "type": "main",
             "index": 0
           }
@@ -866,7 +695,7 @@
       "main": [
         [
           {
-            "node": "Upload file",
+            "node": "HTTP Request",
             "type": "main",
             "index": 0
           }
@@ -878,11 +707,6 @@
             "index": 0
           }
         ]
-      ]
-    },
-    "Append or update row in sheet1": {
-      "main": [
-        []
       ]
     },
     "Schedule Trigger": {
@@ -938,7 +762,7 @@
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false
   },
-  "versionId": "e809637b-1527-42e8-99c9-3413bdf76be3",
+  "versionId": "2d6ec798-dd88-45c1-a59a-327682dba829",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "13f85275d344e8d9c498d59fc192bed7ec4284f468fbcfd1ef73c26bb1b119ae"
