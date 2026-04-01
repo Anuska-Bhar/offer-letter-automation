@@ -336,7 +336,7 @@
             "file_url": "={{ $json.webViewLink }}",
             "error": "None",
             "row_number": 0,
-            "name": "",
+            "name": "={{ $json.name.split(\"_\")[0] }}",
             "id": "={{ $json.name.split(\"_\")[1] }}"
           },
           "matchingColumns": [
@@ -545,7 +545,7 @@
             },
             {
               "id": "04a990a5-c227-48d7-84b2-28422c41979f",
-              "leftValue": "={{ $json.id }}",
+              "leftValue": "=\"{{ $json.id }}\"",
               "rightValue": 0,
               "operator": {
                 "type": "string",
@@ -741,7 +741,7 @@
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false
   },
-  "versionId": "300daa0e-bfab-48f0-8558-333f019f0c9a",
+  "versionId": "9e2ca8bf-cd49-46df-81c4-8df4f4b8b5c7",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "13f85275d344e8d9c498d59fc192bed7ec4284f468fbcfd1ef73c26bb1b119ae"
