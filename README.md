@@ -135,3 +135,11 @@ http://localhost:5678
 ▶ Execute Workflow
 
 ---
+## 🖥 Alternative: Run via Docker Desktop (No Terminal)
+
+1. Open Docker Desktop  
+2. Click “Add Project”  
+3. Select project folder (with docker-compose.yml)  
+4. Click “Start”  
+
+System will run automatically.
