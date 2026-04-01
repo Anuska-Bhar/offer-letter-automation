@@ -68,8 +68,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        0,
-        64
+        -208,
+        128
       ],
       "id": "53ca20ff-7792-4a58-8636-b22355e258f6",
       "name": "HTTP Request"
@@ -120,8 +120,8 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        208,
-        0
+        16,
+        80
       ],
       "id": "51553009-e20f-4e61-93ba-010e1791f99c",
       "name": "Upload file",
@@ -131,40 +131,6 @@
           "name": "Google Drive account"
         }
       }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 3
-          },
-          "conditions": [
-            {
-              "id": "f521450b-f5ad-4d56-97df-118e2fadac70",
-              "leftValue": "={{ $json.status }}",
-              "rightValue": 0,
-              "operator": {
-                "type": "string",
-                "operation": "empty",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.3,
-      "position": [
-        -256,
-        160
-      ],
-      "id": "5e9ec367-53e2-430d-acd8-6c1afc896fce",
-      "name": "If"
     },
     {
       "parameters": {
@@ -334,8 +300,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        208,
-        256
+        480,
+        0
       ],
       "id": "750c21ac-4a92-45d5-ad8f-44fee8585276",
       "name": "Update row in sheet1",
@@ -370,6 +336,7 @@
             "file_url": "={{ $json.webViewLink }}",
             "error": "None",
             "row_number": 0,
+            "name": "",
             "id": "={{ $json.name.split(\"_\")[1] }}"
           },
           "matchingColumns": [
@@ -515,8 +482,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        384,
-        0
+        480,
+        256
       ],
       "id": "af5f0a29-3fff-41fc-8eda-ea52bb4ed69c",
       "name": "Update row in sheet",
@@ -566,6 +533,16 @@
                 "operation": "notEmpty",
                 "singleValue": true
               }
+            },
+            {
+              "id": "d5f02e90-f027-4aba-878c-1861c8e4cd9c",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
             }
           ],
           "combinator": "and"
@@ -593,7 +570,7 @@
           "conditions": [
             {
               "id": "8485bfcb-bdd6-4263-abe3-7583bca5f316",
-              "leftValue": "={{ $json.status }}",
+              "leftValue": "={{ $json.name.split(\"_\")[1] }}",
               "rightValue": "Generated",
               "operator": {
                 "type": "string",
@@ -609,8 +586,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        592,
-        0
+        240,
+        96
       ],
       "id": "163623bc-49c5-4513-bf91-4ee9031eb9f1",
       "name": "If2"
@@ -633,7 +610,7 @@
       "main": [
         [
           {
-            "node": "If",
+            "node": "HTTP Request",
             "type": "main",
             "index": 0
           }
@@ -684,25 +661,7 @@
       "main": [
         [
           {
-            "node": "Update row in sheet",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If": {
-      "main": [
-        [
-          {
-            "node": "HTTP Request",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Update row in sheet1",
+            "node": "If2",
             "type": "main",
             "index": 0
           }
@@ -733,13 +692,7 @@
     },
     "Update row in sheet": {
       "main": [
-        [
-          {
-            "node": "If2",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "If2": {
@@ -747,6 +700,13 @@
         [
           {
             "node": "Update row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update row in sheet",
             "type": "main",
             "index": 0
           }
@@ -762,7 +722,7 @@
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false
   },
-  "versionId": "2d6ec798-dd88-45c1-a59a-327682dba829",
+  "versionId": "ca699700-ce9d-413c-8767-a401a652126e",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "13f85275d344e8d9c498d59fc192bed7ec4284f468fbcfd1ef73c26bb1b119ae"
