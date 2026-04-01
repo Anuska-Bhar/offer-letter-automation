@@ -187,12 +187,22 @@
           "value": {
             "status": "failed",
             "error": "ERROR",
-            "name": "={{ $json[\"name\"].trim().split(\"_\")[0] }}"
+            "id": "={{ $json.name.split(\"_\")[1] }}"
           },
           "matchingColumns": [
-            "name"
+            "id"
           ],
           "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
             {
               "id": "template_key",
               "displayName": "template_key",
@@ -922,9 +932,12 @@
   "active": true,
   "settings": {
     "executionOrder": "v1",
-    "binaryMode": "separate"
+    "binaryMode": "separate",
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
   },
-  "versionId": "d352fbc9-53db-473a-bf9d-7d70e231cc36",
+  "versionId": "83e8e1b4-0229-46b3-bc87-73faa7f1e629",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "13f85275d344e8d9c498d59fc192bed7ec4284f468fbcfd1ef73c26bb1b119ae"
