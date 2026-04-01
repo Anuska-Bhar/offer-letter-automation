@@ -187,10 +187,11 @@
           "value": {
             "status": "failed",
             "error": "ERROR",
-            "id": "={{ $json.name.split(\"_\")[1] }}"
+            "id": "",
+            "name": "={{ $json.name.split(\"_\")[0] }}"
           },
           "matchingColumns": [
-            "id"
+            "name"
           ],
           "schema": [
             {
@@ -937,7 +938,7 @@
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false
   },
-  "versionId": "83e8e1b4-0229-46b3-bc87-73faa7f1e629",
+  "versionId": "e809637b-1527-42e8-99c9-3413bdf76be3",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "13f85275d344e8d9c498d59fc192bed7ec4284f468fbcfd1ef73c26bb1b119ae"
